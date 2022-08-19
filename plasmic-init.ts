@@ -1,4 +1,5 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
+import { ContentfulFetcher, ContentfulField } from "./components/contentful";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -23,3 +24,31 @@ export const PLASMIC = initPlasmicLoader({
 // https://docs.plasmic.app/learn/app-hosting/#set-a-plasmic-project-to-use-your-app-host
 
 // PLASMIC.registerComponent(...);
+
+PLASMIC.registerComponent(ContentfulFetcher, {
+  name: "ContentfulFetcher",
+  props: {
+    children: {
+      type: "slot",
+      defaultValue: {
+        type: "vbox",
+        children: [
+          {
+            type: "component",
+            name: "ContentfulField",
+          },
+        ],
+      },
+    },
+  },
+});
+
+PLASMIC.registerComponent(ContentfulField, {
+  name: "ContentfulField",
+  props: {
+    path: {
+      type: "choice",
+      options: (props, ctx) => ctx.fields,
+    },
+  },
+});
