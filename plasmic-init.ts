@@ -1,5 +1,5 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
-import { ContentfulFetcher, ContentfulField } from "./components/contentful";
+import { ContentfulFetcher as ContentfulFetcherOrig, ContentfulField as ContentfulFieldOrig} from "./components/contentful";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -25,8 +25,8 @@ export const PLASMIC = initPlasmicLoader({
 
 // PLASMIC.registerComponent(...);
 
-PLASMIC.registerComponent(ContentfulFetcher, {
-  name: "ContentfulFetcher",
+PLASMIC.registerComponent(ContentfulFetcherOrig, {
+  name: "ContentfulFetcherOrig",
   props: {
     children: {
       type: "slot",
@@ -35,7 +35,7 @@ PLASMIC.registerComponent(ContentfulFetcher, {
         children: [
           {
             type: "component",
-            name: "ContentfulField",
+            name: "ContentfulFieldOrig",
           },
         ],
       },
@@ -43,8 +43,8 @@ PLASMIC.registerComponent(ContentfulFetcher, {
   },
 });
 
-PLASMIC.registerComponent(ContentfulField, {
-  name: "ContentfulField",
+PLASMIC.registerComponent(ContentfulFieldOrig, {
+  name: "ContentfulFieldOrig",
   props: {
     path: {
       type: "choice",
