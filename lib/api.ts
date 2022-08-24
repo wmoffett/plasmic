@@ -2,6 +2,12 @@ process.env.CONTENTFUL_SPACE_ID = "wbbhf1qd7970";
 process.env.CONTENTFUL_ACCESS_TOKEN =
   "-W1IoA-JTS3yA3py_FyXDdG42P02SFq5vLBff-KXfrQ";
 
+
+
+process.env.CONTENTFUL_SPACE_ID = "o80oqw32rhmg";
+process.env.CONTENTFUL_ACCESS_TOKEN =
+  "Kv--4rISSalKyJLXuUL8bPKb950cDc52FSfrPHCPu6Y";
+
 const POST_GRAPHQL_FIELDS = `
 slug
 title

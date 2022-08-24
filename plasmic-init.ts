@@ -1,5 +1,5 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
-import { ContentfulFetcher as ContentfulFetcherOrig, ContentfulField as ContentfulFieldOrig} from "./components/contentful";
+import { ContentfulFetcher as ContentfulFetcherOrig, ContentfulField as ContentfulFieldOrig } from "./components/contentful";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
