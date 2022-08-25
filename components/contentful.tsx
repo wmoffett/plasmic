@@ -2,7 +2,21 @@ import { DataProvider, repeatedElement, useSelector } from "@plasmicapp/host";
 import { usePlasmicQueryData } from "@plasmicapp/query";
 import L from "lodash";
 import { ReactNode } from "react";
-import { getAllPostsForHome } from "../lib/api";
+import { getAllPostsForHome } from "@lib/api";
+import documentToContent, {
+  renderNodeFactory,
+} from '@lib/renderDocument/documentToContent';
+
+// import {
+//   Block,
+//   Inline,
+//   BLOCKS,
+//   INLINES,
+//   Document,
+//   TopLevelBlock,
+// } from '@contentful/rich-text-types';
+
+import { NodeRenderer, Options } from '@contentful/rich-text-react-renderer';
 
 export function ContentfulFetcher({
   type,
@@ -44,6 +58,7 @@ export function ContentfulField({
   setControlContextData: (data: any) => void;
 }) {
   const item = useSelector("contenfulItem");
+  const options: Options = {};
   if (!item) {
     return <div>ContentfulField must be used within a ContentfulFetcher</div>;
   }
@@ -52,7 +67,12 @@ export function ContentfulField({
     return <div>ContentfulField must specify a path.</div>;
   }
   const data = L.get(item, path);
-  if (data?.url) {
+
+  console.log("!", data);
+
+  if(data?.json) {
+    return documentToContent(data.json, options);
+  } else if (data?.url) {
     return <img src={data.url} />;
   } else {
     return <div className={className}>{data}</div>;

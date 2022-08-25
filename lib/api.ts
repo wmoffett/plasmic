@@ -15,7 +15,9 @@ featuredImage {
   url
 }
 date
-description
+description {
+  json
+}
 `;
 
 async function fetchGraphQL(query: string, preview = false) {

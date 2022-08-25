@@ -1,0 +1,16 @@
+export { default as Paragraph } from '@lib/renderDocument/components/Paragraph';
+export { default as HeadingOne } from '@lib/renderDocument/components/HeadingOne';
+export { default as HeadingTwo } from '@lib/renderDocument/components/HeadingTwo';
+export { default as HeadingThree } from '@lib/renderDocument/components/HeadingThree';
+export { default as HeadingFour } from '@lib/renderDocument/components/HeadingFour';
+export { default as HeadingFive } from '@lib/renderDocument/components/HeadingFive';
+export { default as HeadingSix } from '@lib/renderDocument/components/HeadingSix';
+export { default as EmbeddedEntry } from '@lib/renderDocument/components/EmbeddedEntry';
+export { default as UnorderedList } from '@lib/renderDocument/components/UnorderedList';
+export { default as OrderedList } from '@lib/renderDocument/components/OrderedList';
+export { default as ListItem } from '@lib/renderDocument/components/ListItem';
+export { default as Table } from '@lib/renderDocument/components/Table';
+export { default as TableHead } from '@lib/renderDocument/components/TableHead';
+export { default as TableRow } from '@lib/renderDocument/components/TableRow';
+export { default as TableCell } from '@lib/renderDocument/components/TableCell';
+export { default as TableHeadCell } from '@lib/renderDocument/components/TableHeadCell';
