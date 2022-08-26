@@ -72,8 +72,7 @@ export function ContentfulField({
   console.log("!", data);
 
   if(data?.json) {
-    // return documentToContent(data.json, options);
-    return blogToContent(data);
+    return documentToContent(data);
   } else if (data?.url) {
     return <img src={data.url} alt={data.description}/>;
   } else {

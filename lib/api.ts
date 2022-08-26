@@ -8,53 +8,6 @@ process.env.CONTENTFUL_SPACE_ID = "o80oqw32rhmg";
 process.env.CONTENTFUL_ACCESS_TOKEN =
   "Kv--4rISSalKyJLXuUL8bPKb950cDc52FSfrPHCPu6Y";
 
-
-  // query {
-  //   # add your query
-  //   blogPostCollection(where:{ slug_exists:true}, preview:true, limit:1){
-  //     items{
-  //       slug
-  //       title
-  //       featuredImage {
-  //         url
-  //         description
-  //       }
-  //       date
-  //       description {
-  //         json
-  //         links {
-  //           assets {
-  //             __typename
-  //             block{
-  //               sys {
-  //                 id
-  //               }
-  //               fileName
-  //               url
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
-  // const POST_GRAPHQL_FIELDS = `
-  // slug
-  // title
-  // featuredImage {
-  //   url
-  //   description
-  // }
-  // date
-  // description {
-  //   json
-  //   links {
-  //     __typename
-  //   }
-  // }
-  // `;
-
 const POST_GRAPHQL_FIELDS = `
 slug
 title

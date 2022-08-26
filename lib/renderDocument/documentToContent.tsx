@@ -102,7 +102,7 @@ export const defaultNodeRenderers: RenderNode = {
 
 export const defaultTextRenderer: RenderText = (text) => text;
 
-export function blogToContent(
+export default function documentToContent(
   data: {
     json: Document,
     links: any,
