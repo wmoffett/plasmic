@@ -56,9 +56,6 @@ export function assetEntry({
   return null;
 }
 
-
-
-
 const Asset = <T extends AssetProps>(props: T): React.ReactElement => {
   const {
     data: { url, width, height, description },
@@ -66,15 +63,6 @@ const Asset = <T extends AssetProps>(props: T): React.ReactElement => {
 
   return (
     <AssetContainer component="picture">
-      {/*
-        TODO: utilize the contentType property to normalize the data for any
-              `image/*` assets earlier up in the chain (getStaticProps) so that
-              they render as the @assemblies/Image component instead
-      */}
-      {/*
-        TODO: `next/image` can do this as well; replace this code if the
-              `next/image` component is used
-      */}
       <source srcSet={`${url}?fm=webp`} type="image/webp" />
       <source srcSet={`${url}?fm=avif`} type="image/avif" />
       <source srcSet={`${url}?fm=png`} type="image/png" />

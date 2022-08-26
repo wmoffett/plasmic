@@ -62,7 +62,6 @@ function extractPost(fetchResponse: any) {
 }
 
 function extractPostEntries(fetchResponse: any) {
-  console.log("!!", fetchResponse.errors);
   return fetchResponse?.data?.blogPostCollection?.items;
 }
 
