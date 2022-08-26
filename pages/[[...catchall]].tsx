@@ -55,15 +55,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const pageMeta = plasmicData.entryCompMetas[0];
   // Cache the necessary data fetched for the page
   const queryCache = await extractPlasmicQueryData(
-    <ThemeProvider theme={theme}>
-    <PlasmicRootProvider
+    // <ThemeProvider theme={theme}>
+    <ChakraProvider theme={theme}>
+      <PlasmicRootProvider
         loader={PLASMIC}
         prefetchedData={plasmicData}
         pageParams={pageMeta.params}
       >
         <PlasmicComponent component={pageMeta.displayName} />
       </PlasmicRootProvider>
-    </ThemeProvider>
+    </ChakraProvider>
+    // </ThemeProvider>
   );
   // Use revalidate if you want incremental static regeneration
   return { props: { plasmicData, queryCache }, revalidate: 60 };

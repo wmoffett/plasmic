@@ -11,6 +11,7 @@ export default function PlasmicHost() {
 
   if(PLASMIC) {
     return  <ChakraProvider theme={theme}>
+      <div>provider</div>
         <PlasmicCanvasHost />
       </ChakraProvider>
   }
