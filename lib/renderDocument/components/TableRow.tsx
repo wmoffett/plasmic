@@ -1,11 +1,17 @@
-import { TableRow as MuiTableRow, TableRowProps} from '@material-ui/core';
-import { NodeRendererProps } from '@lib/renderDocument/documentToContent';
+import { 
+  NodeRendererProps 
+} from '@lib/renderDocument/documentToContent';
+
+import {
+  Tr as ShakraTableRow,
+  TableRowProps,
+} from '@chakra-ui/react';
 
 const TableCell = ({
   node: _node,
   ...props
 }: NodeRendererProps & TableRowProps): React.ReactElement => (
-  <MuiTableRow {...props}></MuiTableRow>
+  <ShakraTableRow {...props}></ShakraTableRow>
 );
 
 export default TableCell;

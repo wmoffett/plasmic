@@ -1,11 +1,13 @@
-
-import { Divider as ChakraDivider, DividerProps } from '@chakra-ui/react'
-
-import { Typography, TypographyProps } from '@material-ui/core';
-import { NodeRendererProps } from '@lib/renderDocument/documentToContent';
+import { 
+  NodeRendererProps 
+} from '@lib/renderDocument/documentToContent';
+import { 
+  Divider as ChakraDivider, 
+  DividerProps 
+} from '@chakra-ui/react';
 
 const Divider = ({
-  node: _node, // silences linter; prevents node from being spread into the component
+  node: _node,
   ...props
 }: NodeRendererProps & DividerProps): React.ReactElement => (
   <ChakraDivider  {...props} />

@@ -3,13 +3,13 @@ import {
 } from '@lib/renderDocument/documentToContent';
 
 import {
-  Box,
-  BoxProps
+  Button as ChakraButton,
+  ButtonProps
 } from "@chakra-ui/react";
 
-const EmbeddedEntry = ({
+const Button = ({
   node: _node, // silences linter; prevents node from being spread into the component
   ...props
-}: NodeRendererProps & BoxProps): React.ReactElement => <Box {...props} />;
+}: NodeRendererProps & ButtonProps): React.ReactElement => <ChakraButton {...props} />;
 
-export default EmbeddedEntry;
+export default Button;

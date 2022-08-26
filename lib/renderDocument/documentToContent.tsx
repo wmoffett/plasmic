@@ -37,7 +37,11 @@ import {
   TableCell
 } from '@lib/renderDocument/components';
 
-import Divider from '@material-ui/core/Divider';
+
+import {
+  Text,
+  Divider,
+} from '@chakra-ui/react'
 
 export interface NodeRendererProps {
   node: Block | Inline;
@@ -52,9 +56,9 @@ const renderNodeFactory =
     <Component node={node}>{children}</Component>;
 
 const defaultMarkRenderers: RenderMark = {
-  [MARKS.BOLD]: (text) => <b>{text}</b>,
-  [MARKS.ITALIC]: (text) => <i>{text}</i>,
-  [MARKS.UNDERLINE]: (text) => <u>{text}</u>,
+  [MARKS.BOLD]: (text) => <Text as={"b"}>{text}</Text>,
+  [MARKS.ITALIC]: (text) => <Text as={"i"}>{text}</Text>,
+  [MARKS.UNDERLINE]: (text) => <Text as={"u"}>{text}</Text>,
   [MARKS.CODE]: (text) => <code>{text}</code>,
 };
 

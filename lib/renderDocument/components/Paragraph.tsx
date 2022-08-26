@@ -1,11 +1,17 @@
-import { Typography, TypographyProps } from '@material-ui/core';
-import { NodeRendererProps } from '@lib/renderDocument/documentToContent';
+import { 
+  NodeRendererProps 
+} from '@lib/renderDocument/documentToContent';
+
+import {
+  Text,
+  TextProps,
+} from '@chakra-ui/react'
 
 const Paragraph = ({
-  node: _node, // silences linter; prevents node from being spread into the component
+  node: _node,
   ...props
-}: NodeRendererProps & TypographyProps): React.ReactElement => (
-  <Typography {...props} />
+}: NodeRendererProps & TextProps): React.ReactElement => (
+  <Text {...props} />
 );
 
 export default Paragraph;

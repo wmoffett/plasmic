@@ -3,36 +3,15 @@ import {
   Inline,
 } from '@contentful/rich-text-types';
 
-import { Box } from '@material-ui/core';
-import { styled } from '@material-ui/core/styles';
-export interface Asset {
-  title: string;
-  description: string;
-  fileName?: string;
-  size?: number;
-  url: string;
-  width: number;
-  height: number;
-}
-
-interface AssetProps {
-  data: Asset;
-}
-
-const AssetContainer = styled(Box)({
-  display: 'block',
-});
-
-const StyledImage = styled('img')({
-  maxWidth: '100%',
-  height: 'auto',
-});
+import { 
+  Box, 
+  Image 
+} from '@chakra-ui/react';
 
 interface Sys {
   id: string;
   __typename: string;
 }
-
 interface AssetEntryProps {
   data: {
     links?: any;
@@ -55,6 +34,19 @@ export function assetEntry({
 
   return null;
 }
+export interface Asset {
+  title: string;
+  description: string;
+  fileName?: string;
+  size?: number;
+  url: string;
+  width: number;
+  height: number;
+}
+
+interface AssetProps {
+  data: Asset;
+}
 
 const Asset = <T extends AssetProps>(props: T): React.ReactElement => {
   const {
@@ -62,19 +54,19 @@ const Asset = <T extends AssetProps>(props: T): React.ReactElement => {
   } = props;
 
   return (
-    <AssetContainer component="picture">
+    <Box>
       <source srcSet={`${url}?fm=webp`} type="image/webp" />
       <source srcSet={`${url}?fm=avif`} type="image/avif" />
       <source srcSet={`${url}?fm=png`} type="image/png" />
       <source srcSet={`${url}?fm=jpg`} type="image/jpg" />
-      <StyledImage
+      <Image
         alt={description}
         src={url}
         width={width}
         height={height}
         loading="lazy"
       />
-    </AssetContainer>
+    </Box>
   );
 };
 

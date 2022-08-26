@@ -1,11 +1,18 @@
-import { TableHead as MuiTableHead, TableHeadProps, TableRow as MuiTableRow, TableRowProps} from '@material-ui/core';
-import { NodeRendererProps } from '@lib/renderDocument/documentToContent';
+import { 
+  NodeRendererProps 
+} from '@lib/renderDocument/documentToContent';
+
+import {
+  Thead as ShakraTableHead,
+  TableHeadProps,
+  TableRowProps,
+} from '@chakra-ui/react';
 
 const TableHead = ({
   node: _node,
   ...props
 }: NodeRendererProps & TableHeadProps & TableRowProps) : React.ReactElement => (
-  <MuiTableHead {...props}/>
+  <ShakraTableHead {...props}/>
 
 );
 

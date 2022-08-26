@@ -1,11 +1,16 @@
-import { List, ListProps } from '@material-ui/core';
+// import { List, ListProps } from '@material-ui/core';
 import { NodeRendererProps } from '@lib/renderDocument/documentToContent';
+
+import { 
+  UnorderedList as ChakraUnorderedList,
+  ListProps,
+} from '@chakra-ui/react';
 
 const UnorderedList = ({
   node: _node, // silences linter; prevents node from being spread into the component
   ...props
 }: NodeRendererProps & ListProps): React.ReactElement => (
-  <List disablePadding component="ul" {...props} />
+  <ChakraUnorderedList disablePadding component="ul" {...props} />
 );
 
 export default UnorderedList;

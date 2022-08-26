@@ -1,13 +1,11 @@
-import { NodeRendererProps } from '@lib/renderDocument/documentToContent';
-import { Heading, HeadingProps } from '@chakra-ui/react'
-// import { Typography, TypographyProps } from '@material-ui/core';
+import { 
+  NodeRendererProps 
+} from '@lib/renderDocument/documentToContent';
 
-// const HeadingFour = ({
-//   node: _node, // silences linter; prevents node from being spread into the component
-//   ...props
-// }: NodeRendererProps & TypographyProps): React.ReactElement => (
-//   <Typography variant="h4" {...props} />
-// );
+import { 
+  Heading, 
+  HeadingProps 
+} from '@chakra-ui/react';
 
 const HeadingFour = ({
   node: _node,
