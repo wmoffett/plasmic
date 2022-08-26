@@ -1,5 +1,4 @@
 import { TableRow as MuiTableRow, TableRowProps} from '@material-ui/core';
-// [BLOCKS.TABLE_ROW]: (node, children) => <tr>{children}</tr>,
 import { NodeRendererProps } from '@lib/renderDocument/documentToContent';
 
 const TableCell = ({

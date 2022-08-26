@@ -11,8 +11,11 @@ import Error from "next/error";
 import { useRouter } from "next/router";
 import { PLASMIC } from "../plasmic-init";
 
-import { ThemeProvider } from '@material-ui/core/styles';
+// import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '@styles/theme';
+
+
+import { ChakraProvider } from '@chakra-ui/react'
 
 export default function PlasmicLoaderPage(props: {
   plasmicData?: ComponentRenderData;
@@ -25,7 +28,8 @@ export default function PlasmicLoaderPage(props: {
   }
   const pageMeta = plasmicData.entryCompMetas[0];
   return (
-    <ThemeProvider theme={theme}>
+    // <ThemeProvider theme={theme}>
+    <ChakraProvider theme={theme}>
       <PlasmicRootProvider
         loader={PLASMIC}
         prefetchedData={plasmicData}
@@ -35,7 +39,8 @@ export default function PlasmicLoaderPage(props: {
       >
         <PlasmicComponent component={pageMeta.displayName} />
       </PlasmicRootProvider>
-    </ThemeProvider>
+    </ChakraProvider>
+    // </ThemeProvider>
   );
 }
 

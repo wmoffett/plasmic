@@ -4,6 +4,7 @@ import L from "lodash";
 import { ReactNode } from "react";
 import { getAllPostsForHome } from "@lib/api";
 import documentToContent, {
+  blogToContent,
   renderNodeFactory,
 } from '@lib/renderDocument/documentToContent';
 
@@ -68,10 +69,11 @@ export function ContentfulField({
   }
   const data = L.get(item, path);
 
-  // console.log("!", data);
+  console.log("!", data);
 
   if(data?.json) {
-    return documentToContent(data.json, options);
+    // return documentToContent(data.json, options);
+    return blogToContent(data);
   } else if (data?.url) {
     return <img src={data.url} alt={data.description}/>;
   } else {

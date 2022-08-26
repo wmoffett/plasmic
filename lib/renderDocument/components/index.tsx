@@ -14,3 +14,4 @@ export { default as TableHead } from '@lib/renderDocument/components/TableHead';
 export { default as TableRow } from '@lib/renderDocument/components/TableRow';
 export { default as TableCell } from '@lib/renderDocument/components/TableCell';
 export { default as TableHeadCell } from '@lib/renderDocument/components/TableHeadCell';
+export { default as Asset, assetEntry } from '@lib/renderDocument/components/Asset';

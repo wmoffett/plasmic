@@ -1,6 +1,4 @@
 import { TableContainer, Table as MuiTable, TableProps, TableBody as MuiTableBody, TableBodyProps } from '@material-ui/core';
-
-
 import { NodeRendererProps } from '@lib/renderDocument/documentToContent';
 
 const Table = ({

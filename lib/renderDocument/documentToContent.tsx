@@ -6,8 +6,9 @@ import {
   RenderText,
   Options,
 } from '@contentful/rich-text-react-renderer';
+
 import {
-  Document as RichTextDocument,
+  Document,
   BLOCKS,
   TopLevelBlock,
   MARKS,
@@ -16,6 +17,8 @@ import {
 } from '@contentful/rich-text-types';
 
 import {
+  Asset,
+  assetEntry,
   Paragraph,
   HeadingOne,
   HeadingTwo,
@@ -41,21 +44,19 @@ export interface NodeRendererProps {
   children: React.ReactNode;
 }
 
-export const renderNodeFactory =
+const renderNodeFactory =
   (Component: React.ElementType): NodeRenderer =>
   // Fix Error: Component definition is missing display name  react/display-name
   // eslint-disable-next-line react/display-name
   (node, children) =>
     <Component node={node}>{children}</Component>;
 
-export const defaultMarkRenderers: RenderMark = {
+const defaultMarkRenderers: RenderMark = {
   [MARKS.BOLD]: (text) => <b>{text}</b>,
   [MARKS.ITALIC]: (text) => <i>{text}</i>,
   [MARKS.UNDERLINE]: (text) => <u>{text}</u>,
   [MARKS.CODE]: (text) => <code>{text}</code>,
 };
-
-
 
 export const defaultNodeRenderers: RenderNode = {
   [BLOCKS.DOCUMENT]: (node, children) => children,
@@ -88,16 +89,8 @@ export const defaultNodeRenderers: RenderNode = {
     });
     return transformedChildren;
   },
-  //[BLOCKS.QUOTE]: (node, children) => <blockquote>{children}</blockquote>,
-  [BLOCKS.QUOTE]: (node, children) => <blockquote className="padding">
-  <div className="blockquote-content padding">
-  {children}
-  </div>
-  </blockquote>,
+  [BLOCKS.QUOTE]: (node, children) => <blockquote>{children}</blockquote>,
   [BLOCKS.HR]: () => <Divider />,
-  // [BLOCKS.HR]: () => <hr />,
-  // [INLINES.ASSET_HYPERLINK]: (node) =>
-  //   defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
   // [INLINES.ENTRY_HYPERLINK]: (node) =>
   //   defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
   // [INLINES.EMBEDDED_ENTRY]: (node) =>
@@ -109,13 +102,19 @@ export const defaultNodeRenderers: RenderNode = {
 
 export const defaultTextRenderer: RenderText = (text) => text;
 
-export default function documentToContent(
-  document: RichTextDocument,
+export function blogToContent(
+  data: {
+    json: Document,
+    links: any,
+  },
   options: Options = {}
-): React.ReactElement {
+  ) : React.ReactElement {
+  
   const mergedOptions: Options = {
     renderNode: Object.assign(
-      {},
+      {
+        [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline) => assetEntry({ node, data })
+      },
       defaultNodeRenderers,
       options.renderNode ?? {}
     ),
@@ -130,5 +129,5 @@ export default function documentToContent(
     mergedOptions.renderText = options.renderText;
   }
 
-  return <>{documentToReactComponents(document, mergedOptions)}</>;
+  return <>{documentToReactComponents(data.json, mergedOptions)}</>;
 }
