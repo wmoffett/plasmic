@@ -11,11 +11,11 @@ const theme = createTheme({
   },
   typography: {
     h1: {
-      // fontSize: 60,
-      // lineHeight: '66px',
-      // textTransform: 'uppercase',
-      // marginTop: 96,
-      // marginBottom: 96,
+      fontSize: 60,
+      lineHeight: '66px',
+      textTransform: 'uppercase',
+      marginTop: 96,
+      marginBottom: 96,
     },
   },
 });
