@@ -13,6 +13,7 @@ slug
 title
 featuredImage {
   url
+  description
 }
 date
 description {
