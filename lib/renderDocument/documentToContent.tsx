@@ -41,6 +41,8 @@ export interface NodeRendererProps {
 
 export const renderNodeFactory =
   (Component: React.ElementType): NodeRenderer =>
+  // Fix Error: Component definition is missing display name  react/display-name
+  // eslint-disable-next-line react/display-name
   (node, children) =>
     <Component node={node}>{children}</Component>;
 
