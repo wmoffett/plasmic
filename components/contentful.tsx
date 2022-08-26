@@ -73,7 +73,7 @@ export function ContentfulField({
   if(data?.json) {
     return documentToContent(data.json, options);
   } else if (data?.url) {
-    return <img src={data.url} />;
+    return <img src={data.url} alt={data.description}/>;
   } else {
     return <div className={className}>{data}</div>;
   }
