@@ -13,6 +13,6 @@ const HeadingFour = ({
   node: _node,
   ...props
 }: NodeRendererProps & HeadingProps): React.ReactElement => (
-  <Heading as="h4" {...props} />
+  <Heading as="h4" size={"md"} {...props} />
 );
 export default HeadingFour;
