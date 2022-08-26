@@ -68,7 +68,7 @@ export function ContentfulField({
   }
   const data = L.get(item, path);
 
-  console.log("!", data);
+  // console.log("!", data);
 
   if(data?.json) {
     return documentToContent(data.json, options);
