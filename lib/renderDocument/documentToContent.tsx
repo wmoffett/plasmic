@@ -34,6 +34,8 @@ import {
   TableCell
 } from '@lib/renderDocument/components';
 
+import Divider from '@material-ui/core/Divider';
+
 export interface NodeRendererProps {
   node: Block | Inline;
   children: React.ReactNode;
@@ -86,8 +88,14 @@ export const defaultNodeRenderers: RenderNode = {
     });
     return transformedChildren;
   },
-  [BLOCKS.QUOTE]: (node, children) => <blockquote>{children}</blockquote>,
-  [BLOCKS.HR]: () => <hr />,
+  //[BLOCKS.QUOTE]: (node, children) => <blockquote>{children}</blockquote>,
+  [BLOCKS.QUOTE]: (node, children) => <blockquote className="padding">
+  <div className="blockquote-content padding">
+  {children}
+  </div>
+  </blockquote>,
+  [BLOCKS.HR]: () => <Divider />,
+  // [BLOCKS.HR]: () => <hr />,
   // [INLINES.ASSET_HYPERLINK]: (node) =>
   //   defaultInline(INLINES.ASSET_HYPERLINK, node as Inline),
   // [INLINES.ENTRY_HYPERLINK]: (node) =>
