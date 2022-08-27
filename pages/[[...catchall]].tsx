@@ -10,12 +10,10 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import Error from "next/error";
 import { useRouter } from "next/router";
 import { PLASMIC } from "../plasmic-init";
+import { ChakraProvider } from '@chakra-ui/react'
 
-// import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '@styles/theme';
 
-
-import { ChakraProvider } from '@chakra-ui/react'
 
 export default function PlasmicLoaderPage(props: {
   plasmicData?: ComponentRenderData;

@@ -11,7 +11,7 @@ const HeadingThree = ({
   node: _node,
   ...props
 }: NodeRendererProps & HeadingProps): React.ReactElement => (
-  <Heading as="h3" size={"lg"} {...props} />
+  <Heading as="h3" size={"lg"} m={1} {...props} />
 );
 
 export default HeadingThree;

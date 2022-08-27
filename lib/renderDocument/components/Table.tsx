@@ -14,7 +14,7 @@ const Table = ({
   node: _node,
   ...props
 }: NodeRendererProps & TableProps  & TableBodyProps): React.ReactElement => (
-  <TableContainer>
+  <TableContainer m={2} my={1}>
     <ShakraTable>
       <ShakraTableBody {...props}></ShakraTableBody>
     </ShakraTable> 

@@ -1,6 +1,11 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
 import { ContentfulFetcher as ContentfulFetcherOrig, ContentfulField as ContentfulFieldOrig } from "./components/contentful";
 
+import Button from "./lib/components/Button";
+import Avatar from "./lib/components/Avatar";
+
+
+
 export const PLASMIC = initPlasmicLoader({
   projects: [
     {
@@ -50,5 +55,108 @@ PLASMIC.registerComponent(ContentfulFieldOrig, {
       type: "choice",
       options: (props, ctx) => ctx.fields,
     },
+  },
+});
+
+
+PLASMIC.registerComponent(Button, {
+  name: "Chakra-Button",
+  props: {
+    name: {
+      type: "string",
+      defaultValue: "Button",
+    },
+    colorScheme: {
+      type: "choice",
+      defaultValue: "blue",
+      options: ["red", "green", "blue", "teal","pink", "purple", "cyan",  "orange", "yellow", "facebook", "messenger", "whiteAlpha", "blackAlpha"],
+    },
+    size: {
+      type: "choice",
+      defaultValue: "md",
+      options: ["xs","sm","md","lg"],
+    },
+    variant: {
+      type: "choice",
+      defaultValue: "solid",
+      options: ["solid", "outline", "ghost", "link"],
+    },
+    isActive: {
+      type: "boolean",
+      defaultValue: false,
+      options: [false, true]
+    },
+    isLoading:{
+      type: "boolean",
+      defaultValue: false,
+      options: [false, true]
+    },
+    loadingText: {
+      type:"string",
+      defaultValue: "Submitting",
+    },
+    spinnerPlacement:{
+      type: "choice",
+      defaultValue: "start",
+      options: ["start", "end"],
+    },
+    // icon: {
+    //   type: "choice",
+    //   defaultValue: "",
+    //   options: ["leftIcon", "rightIcon", ""],
+    // }
+  },
+});
+
+PLASMIC.registerComponent(Avatar, {
+  name: "Chakra-Avatar",
+  props: {
+    size: {
+      type: "choice",
+      defaultValue: "md",
+      options: ["2xs", "xs","sm","md","lg", "xl","2xl"],
+    },
+    name: {
+      type: "choice",
+      defaultValue: "Dennis Ma",
+      options:[
+        "Dan Abrahmov",
+        "Kola Tioluwani",
+        "Kent Dodds",
+        "Ryan Florence",
+        "Prosper Otemuyiwa",
+        "Christian Nwamba",
+        "Segun Adebayo",
+        "Benjamin Jackowitz",
+        "Dennis Ma",
+        ""
+      ]
+    },
+    src: {
+      type: "choice",
+      defaultValue: "",
+      options:[
+        "https://bit.ly/dan-abramov",
+        "https://bit.ly/tioluwani-kolawole",
+        "https://bit.ly/kent-c-dodds",
+        "https://bit.ly/ryan-florence",
+        "https://bit.ly/prosper-baba",
+        "https://bit.ly/code-beast",
+        "https://bit.ly/sage-adebayo",
+        "https://images.ctfassets.net/o80oqw32rhmg/2WMOrVT4gDEciD6c76FWRX/b9878d0302bdf0ffe8ce56a94faf9a4f/Screen_Shot_2022-08-26_at_7.34.24_PM.png",
+        ""
+      ]
+    },
+    // colorScheme: {
+    //   type: "choice",
+    //   defaultValue: "blue",
+    //   options: ["red", "green", "blue", "gray", "yellow", "teal", "cyan", "purple","pink", "linkedin", "facebook", "messenger", "whiteAlpha", "blackAlpha"],
+    // },
+
+    // variant: {
+    //   type: "choice",
+    //   defaultValue: "solid",
+    //   options: ["solid", "outline", "ghost", "link"],
+    // }
   },
 });

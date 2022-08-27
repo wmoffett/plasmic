@@ -11,7 +11,7 @@ const HeadingSix = ({
   node: _node,
   ...props
 }: NodeRendererProps & HeadingProps): React.ReactElement => (
-  <Heading as="h6" size={"xs"} {...props} />
+  <Heading as="h6" size={"xs"} m={1} {...props} />
 );
 
 export default HeadingSix;

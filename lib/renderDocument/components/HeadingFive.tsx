@@ -12,7 +12,7 @@ const HeadingFive = ({
   node: _node,
   ...props
 }: NodeRendererProps & HeadingProps): React.ReactElement => (
-  <Heading as="h5" size={"sm"} {...props} />
+  <Heading as="h5" size={"sm"} m={1} {...props} />
 );
 
 export default HeadingFive;

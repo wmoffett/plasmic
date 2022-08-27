@@ -39,6 +39,7 @@ import {
 
 
 import {
+  Code,
   Text,
   Divider,
 } from '@chakra-ui/react'
@@ -59,7 +60,7 @@ const defaultMarkRenderers: RenderMark = {
   [MARKS.BOLD]: (text) => <Text as={"b"}>{text}</Text>,
   [MARKS.ITALIC]: (text) => <Text as={"i"}>{text}</Text>,
   [MARKS.UNDERLINE]: (text) => <Text as={"u"}>{text}</Text>,
-  [MARKS.CODE]: (text) => <code>{text}</code>,
+  [MARKS.CODE]: (text) => <Code>{text}</Code>,
 };
 
 export const defaultNodeRenderers: RenderNode = {
@@ -93,8 +94,10 @@ export const defaultNodeRenderers: RenderNode = {
     });
     return transformedChildren;
   },
-  [BLOCKS.QUOTE]: (node, children) => <blockquote>{children}</blockquote>,
+  // [BLOCKS.QUOTE]: (node, children) => <blockquote>{children}</blockquote>,
   [BLOCKS.HR]: () => <Divider />,
+  [BLOCKS.QUOTE]: (node, children) => <Text as={"blockquote"}>{children}</Text>,
+
   // [INLINES.ENTRY_HYPERLINK]: (node) =>
   //   defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
   // [INLINES.EMBEDDED_ENTRY]: (node) =>

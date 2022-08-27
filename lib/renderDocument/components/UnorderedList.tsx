@@ -10,7 +10,7 @@ const UnorderedList = ({
   node: _node, // silences linter; prevents node from being spread into the component
   ...props
 }: NodeRendererProps & ListProps): React.ReactElement => (
-  <ChakraUnorderedList disablePadding component="ul" {...props} />
+  <ChakraUnorderedList disablePadding component="ul" m={10} my={1} {...props} />
 );
 
 export default UnorderedList;

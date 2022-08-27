@@ -11,7 +11,7 @@ const HeadingOne = ({
   node: _node,
   ...props
 }: NodeRendererProps & HeadingProps): React.ReactElement => (
-  <Heading as="h1" size={"2xl"} {...props} />
+  <Heading as="h1" size={"2xl"} m={1} {...props} />
 );
 
 export default HeadingOne;

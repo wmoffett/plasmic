@@ -11,7 +11,7 @@ const Paragraph = ({
   node: _node,
   ...props
 }: NodeRendererProps & TextProps): React.ReactElement => (
-  <Text {...props} />
+  <Text {...props} m={2} />
 );
 
 export default Paragraph;
