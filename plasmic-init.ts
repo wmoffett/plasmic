@@ -100,11 +100,7 @@ PLASMIC.registerComponent(Button, {
       defaultValue: "start",
       options: ["start", "end"],
     },
-    // icon: {
-    //   type: "choice",
-    //   defaultValue: "",
-    //   options: ["leftIcon", "rightIcon", ""],
-    // }
+
   },
 });
 
@@ -147,16 +143,5 @@ PLASMIC.registerComponent(Avatar, {
         ""
       ]
     },
-    // colorScheme: {
-    //   type: "choice",
-    //   defaultValue: "blue",
-    //   options: ["red", "green", "blue", "gray", "yellow", "teal", "cyan", "purple","pink", "linkedin", "facebook", "messenger", "whiteAlpha", "blackAlpha"],
-    // },
-
-    // variant: {
-    //   type: "choice",
-    //   defaultValue: "solid",
-    //   options: ["solid", "outline", "ghost", "link"],
-    // }
   },
 });
