@@ -31,12 +31,10 @@ import {
   OrderedList,
   ListItem,
   Table,
-  // TableHead,
   TableHeadCell,
   TableRow,
   TableCell
 } from '@lib/renderDocument/components';
-
 
 import {
   Code,
@@ -94,17 +92,8 @@ export const defaultNodeRenderers: RenderNode = {
     });
     return transformedChildren;
   },
-  // [BLOCKS.QUOTE]: (node, children) => <blockquote>{children}</blockquote>,
   [BLOCKS.HR]: () => <Divider />,
   [BLOCKS.QUOTE]: (node, children) => <Text as={"blockquote"}>{children}</Text>,
-
-  // [INLINES.ENTRY_HYPERLINK]: (node) =>
-  //   defaultInline(INLINES.ENTRY_HYPERLINK, node as Inline),
-  // [INLINES.EMBEDDED_ENTRY]: (node) =>
-  //   defaultInline(INLINES.EMBEDDED_ENTRY, node as Inline),
-  // [INLINES.HYPERLINK]: (node, children) => (
-  //   <a href={node.data.uri}>{children}</a>
-  // ),
 };
 
 export const defaultTextRenderer: RenderText = (text) => text;

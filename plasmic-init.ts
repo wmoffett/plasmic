@@ -1,5 +1,5 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
-import { ContentfulFetcher as ContentfulFetcherOrig, ContentfulField as ContentfulFieldOrig } from "./components/contentful";
+import { ContentfulFetcher as ContentfulFetcherOrig, BlogPostFetcher, ContentfulField as ContentfulFieldOrig } from "./components/contentful";
 
 import Button from "./lib/components/Button";
 import Avatar from "./lib/components/Avatar";
@@ -33,6 +33,30 @@ export const PLASMIC = initPlasmicLoader({
 PLASMIC.registerComponent(ContentfulFetcherOrig, {
   name: "ContentfulFetcherOrig",
   props: {
+    children: {
+      type: "slot",
+      defaultValue: {
+        type: "vbox",
+        children: [
+          {
+            type: "component",
+            name: "ContentfulFieldOrig",
+          },
+        ],
+      },
+    },
+  },
+});
+
+
+PLASMIC.registerComponent(BlogPostFetcher, {
+  name: "BlogPostFetcher",
+  props: {
+    slug: {
+      type: "string",
+      defaultValue: "image-and-table",
+      options: ["image-and-table", "paragraph"],
+    },
     children: {
       type: "slot",
       defaultValue: {

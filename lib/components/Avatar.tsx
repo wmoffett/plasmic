@@ -17,10 +17,3 @@ const Avatar = ({
   );
 };
 export default Avatar;
-
-// className={className}
-// colorScheme={colorScheme}
-// size={size}
-// variant={variant}
-// name={name}
-// src={src}

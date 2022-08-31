@@ -3,14 +3,6 @@ import {
   ButtonProps
 } from "@chakra-ui/react";
 
-import {
-  ArrowForwardIcon,
-  ChevronDownIcon,
-  EmailIcon,
-  PhoneIcon,
-  SearchIcon,
-} from "@chakra-ui/icons"
-
 export interface ChakraButtonProps extends ButtonProps {};
 
 const Button = ({
@@ -19,8 +11,6 @@ const Button = ({
 
   const { name, className, colorScheme, size, variant, isActive, isLoading, loadingText, spinnerPlacement }  = props;
 
-  // const Icon = leftIcon ? <EmailIcon /> : undefined;
-  // const Icon = <EmailIcon />;
   return (
     <ChakraButton
       // leftIcon={Icon}
