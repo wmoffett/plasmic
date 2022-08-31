@@ -65,15 +65,21 @@ export const getStaticProps: GetStaticProps<
         }}
       />
       <PlasmicComponent
-        component={'pageTitle'}
+        component="pageTitle"
         componentProps={{
-          root: { 
-            props: { 
-              content: slug 
-            } 
-          },
+          root: {
+            props: {
+              content: 'some content' 
+            }
+          } 
         }}
       />
+      {/* <PlasmicComponent
+        component="Button"
+        componentProps={{
+          children: 'Hello!'
+        }}
+      /> */}
     </PlasmicRootProvider>
   );
 
@@ -100,15 +106,21 @@ const BlogPage: NextPage<BlogPageProps> = ({
         }}
       />
       <PlasmicComponent
-        component={'pageTitle'}
+        component="pageTitle"
         componentProps={{
-          root: { 
-            props: { 
-              content: slug 
-            } 
-          },
+          root: {
+            props: {
+              content: 'some content' 
+            }
+          }
         }}
       />
+      {/* <PlasmicComponent
+        component="Button"
+        componentProps={{
+          children: 'Hello!'
+        }}
+      /> */}
     </PlasmicRootProvider>
   );
 };
