@@ -55,19 +55,15 @@ export function BlogPostFetcher({
 
   const router = useRouter();
 
-  // let querySlug = (router?.query ?  router?.query.slug : slug);
-
-  let querySlug = (router?.query ?  router?.query.slug : slug);
-  // if(router == null){ 
-  //   return;
-  // }
-
-  // if(typeof slug != "string" ){
-  //   slug = "image-and-table";
-  // }
+  let querySlug = (router?.query.slug ?  router?.query.slug : slug);
+  
+  if(router == null){ 
+    return;
+  }
 
   console.log("! slug:", querySlug);
   console.log("! type:", type);
+
   const data = usePlasmicQueryData<any[] | null>(
 
     JSON.stringify({ type }),
@@ -78,7 +74,7 @@ export function BlogPostFetcher({
 
   console.log("!", data.data);
   if (!data?.data) {
-    return <div>Please specify a collection. query {querySlug}</div>;
+    return <div>Please specify a collection. slug {querySlug}</div>;
   }
   return (
     <div className={className}>
