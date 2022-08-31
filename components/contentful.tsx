@@ -56,10 +56,10 @@ export function BlogPostFetcher({
   const router = useRouter();
 
   let querySlug = (router?.query.slug ?  router?.query.slug : slug);
-  
-  if(router == null){ 
-    return;
-  }
+
+  // if(router == null){ 
+  //   return;
+  // }
 
   console.log("! slug:", querySlug);
   console.log("! type:", type);
