@@ -61,18 +61,15 @@ export function BlogPostFetcher({
   //   return;
   // }
 
-  console.log("! slug:", querySlug);
-  console.log("! type:", type);
-
   const data = usePlasmicQueryData<any[] | null>(
 
-    JSON.stringify({ type }),
+    JSON.stringify({ slug }),
     async () => {
       return getPreviewPostBySlug(querySlug);
     }
   );
 
-  console.log("!", data.data);
+
   if (!data?.data) {
     return <div>Please specify a collection. slug {querySlug}</div>;
   }

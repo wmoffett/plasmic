@@ -11,36 +11,6 @@ import { PLASMIC } from "../../plasmic-init";
 
 import { getAllPostsWithSlug } from "@lib/api";
 
-// const cmsConfig = {
-//   host: `https://studio.plasmic.app`,
-//   databaseId: `gCKFKDQ581NNXUi9iwbMyZ`,
-//   databaseToken: `69xOVFM7WmWwaLLG1jJhmv9TMvHMH4MXfAkJiuz5dk5Y1IyTW1Z1GzYJVtWfDFZ7nY8ql7FnFaf7T8wNv42WQ`,
-// };
-
-// TODO: We could export API from @plasmicpkgs/plasmic-cms to avoid needing
-// to re-implement this.
-// async function apiGet(endpoint: string, params: {} = {}) {
-//   const url = new URL(
-//     `${cmsConfig.host}/api/v1/cms/databases/${cmsConfig.databaseId}${endpoint}`
-//   );
-//   url.search = new URLSearchParams(params).toString();
-//   const response = await fetch(url.toString(), {
-//     method: "GET",
-//     headers: {
-//       accept: "*/*",
-//       "x-plasmic-api-cms-tokens": `${cmsConfig.databaseId}:${cmsConfig.databaseToken}`,
-//     },
-//     mode: "cors",
-//   });
-
-//   if (response.status !== 200) {
-//     const message = await response.text();
-//     throw new Error(`${response.status}: ${message}`);
-//   }
-
-//   return await response.json();
-// }
-
 interface BlogParams extends ParsedUrlQuery {
   slug: string;
 }
@@ -48,9 +18,9 @@ interface BlogParams extends ParsedUrlQuery {
 interface Blog {
     slug: string;
     title: string;
-    // featuredImage: object;
-    // date: Date;
-    // description: object;
+    featuredImage: object;
+    date: Date;
+    description: object;
 }
 
 interface BlogPageProps {
@@ -84,12 +54,24 @@ export const getStaticProps: GetStaticProps<
   }
 
   const plasmicData = await PLASMIC.fetchComponentData(pagePath);
+
+  console.log('!getStaticProps PlasmicComponent', slug);
   const queryCache = await extractPlasmicQueryData(
     <PlasmicRootProvider loader={PLASMIC} prefetchedData={plasmicData}>
       <PlasmicComponent
         component={pagePath}
         componentProps={{
           fetcher: { where: { slug } },
+        }}
+      />
+      <PlasmicComponent
+        component={'pageTitle'}
+        componentProps={{
+          root: { 
+            props: { 
+              content: slug 
+            } 
+          },
         }}
       />
     </PlasmicRootProvider>
@@ -103,6 +85,8 @@ const BlogPage: NextPage<BlogPageProps> = ({
   queryCache,
   slug,
 }) => {
+
+  console.log('!BlogPage PlasmicComponent', slug);
   return (
     <PlasmicRootProvider
       loader={PLASMIC}
@@ -113,6 +97,16 @@ const BlogPage: NextPage<BlogPageProps> = ({
         component={pagePath}
         componentProps={{
           fetcher: { where: { slug } },
+        }}
+      />
+      <PlasmicComponent
+        component={'pageTitle'}
+        componentProps={{
+          root: { 
+            props: { 
+              content: slug 
+            } 
+          },
         }}
       />
     </PlasmicRootProvider>
