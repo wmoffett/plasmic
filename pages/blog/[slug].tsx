@@ -8,7 +8,8 @@ import {
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { PLASMIC } from "../../plasmic-init";
-
+import { ChakraProvider } from '@chakra-ui/react'
+import theme from '@styles/theme';
 import { getAllPostsWithSlug } from "@lib/api";
 
 interface BlogParams extends ParsedUrlQuery {
@@ -17,10 +18,6 @@ interface BlogParams extends ParsedUrlQuery {
 
 interface Blog {
     slug: string;
-    title: string;
-    featuredImage: object;
-    date: Date;
-    description: object;
 }
 
 interface BlogPageProps {
@@ -36,7 +33,9 @@ export const getStaticPaths: GetStaticPaths<BlogParams> = async () => {
   
   return {
     paths: blogPosts.map((b) => ({
-      params: { slug: b.slug },
+      params: { 
+        slug: b.slug
+      },
     })),
     fallback: false,
   };
@@ -55,32 +54,22 @@ export const getStaticProps: GetStaticProps<
 
   const plasmicData = await PLASMIC.fetchComponentData(pagePath);
 
-  console.log('!getStaticProps PlasmicComponent', slug);
+  console.log('!slug', slug);
   const queryCache = await extractPlasmicQueryData(
-    <PlasmicRootProvider loader={PLASMIC} prefetchedData={plasmicData}>
-      <PlasmicComponent
-        component={pagePath}
-        componentProps={{
-          fetcher: { where: { slug } },
-        }}
-      />
-      <PlasmicComponent
-        component="pageTitle"
-        componentProps={{
-          root: {
-            props: {
-              content: 'some content' 
+    <ChakraProvider theme={theme}>
+      <PlasmicRootProvider loader={PLASMIC} prefetchedData={plasmicData}>
+        <PlasmicComponent
+          component={pagePath}
+          componentProps={{
+            blogPostFetcher:{
+              props: {
+                slug: slug
+              }
             }
-          } 
-        }}
-      />
-      {/* <PlasmicComponent
-        component="Button"
-        componentProps={{
-          children: 'Hello!'
-        }}
-      /> */}
-    </PlasmicRootProvider>
+          }}
+        />
+      </PlasmicRootProvider>
+    </ChakraProvider>
   );
 
   return { props: { plasmicData, queryCache, slug } };
@@ -94,34 +83,24 @@ const BlogPage: NextPage<BlogPageProps> = ({
 
   console.log('!BlogPage PlasmicComponent', slug);
   return (
-    <PlasmicRootProvider
-      loader={PLASMIC}
-      prefetchedData={plasmicData}
-      prefetchedQueryData={queryCache}
-    >
-      <PlasmicComponent
-        component={pagePath}
-        componentProps={{
-          fetcher: { where: { slug } },
-        }}
-      />
-      <PlasmicComponent
-        component="pageTitle"
-        componentProps={{
-          root: {
-            props: {
-              content: 'some content' 
+    <ChakraProvider theme={theme}>
+      <PlasmicRootProvider
+        loader={PLASMIC}
+        prefetchedData={plasmicData}
+        prefetchedQueryData={queryCache}
+      >
+        <PlasmicComponent
+          component={pagePath}
+          componentProps={{
+            blogPostFetcher:{
+              props: {
+                slug: slug
+              }
             }
-          }
-        }}
-      />
-      {/* <PlasmicComponent
-        component="Button"
-        componentProps={{
-          children: 'Hello!'
-        }}
-      /> */}
-    </PlasmicRootProvider>
+          }}
+        />
+      </PlasmicRootProvider>
+    </ChakraProvider>
   );
 };
 

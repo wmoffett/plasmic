@@ -1,5 +1,5 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
-import { ContentfulFetcher as ContentfulFetcherOrig, BlogPostFetcher, ContentfulField as ContentfulFieldOrig } from "./components/contentful";
+import { BlogFetcher, BlogPostFetcher, BlogField } from "./components/contentful";
 
 import Button from "./lib/components/Button";
 import Avatar from "./lib/components/Avatar";
@@ -30,8 +30,8 @@ export const PLASMIC = initPlasmicLoader({
 
 // PLASMIC.registerComponent(...);
 
-PLASMIC.registerComponent(ContentfulFetcherOrig, {
-  name: "ContentfulFetcherOrig",
+PLASMIC.registerComponent(BlogFetcher, {
+  name: "BlogFetcher",
   props: {
     children: {
       type: "slot",
@@ -40,7 +40,7 @@ PLASMIC.registerComponent(ContentfulFetcherOrig, {
         children: [
           {
             type: "component",
-            name: "ContentfulFieldOrig",
+            name: "BlogField",
           },
         ],
       },
@@ -64,7 +64,7 @@ PLASMIC.registerComponent(BlogPostFetcher, {
         children: [
           {
             type: "component",
-            name: "ContentfulFieldOrig",
+            name: "BlogField",
           },
         ],
       },
@@ -72,8 +72,8 @@ PLASMIC.registerComponent(BlogPostFetcher, {
   },
 });
 
-PLASMIC.registerComponent(ContentfulFieldOrig, {
-  name: "ContentfulFieldOrig",
+PLASMIC.registerComponent(BlogField, {
+  name: "BlogField",
   props: {
     path: {
       type: "choice",
@@ -124,7 +124,16 @@ PLASMIC.registerComponent(Button, {
       defaultValue: "start",
       options: ["start", "end"],
     },
-
+    iconPosition:{
+      type: "choice",
+      defaultValue: "",
+      options: ["left", "right",],  
+    },
+    icon:{
+      type: "choice",
+      defaultValue: "",
+      options: ["AddIcon", "ArrowBackIcon","ArrowDownIcon","ArrowForwardIcon","ArrowLeftIcon","ArrowRightIcon","ArrowUpDownIcon"],
+    },
   },
 });
 

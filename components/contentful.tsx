@@ -7,7 +7,7 @@ import documentToContent from '@lib/renderDocument/documentToContent';
 
 import { useRouter } from 'next/router'
 
-export function ContentfulFetcher({
+export function BlogFetcher({
   type,
   children,
   className,
@@ -52,26 +52,17 @@ export function BlogPostFetcher({
   className?: string;
 }) {
 
-
-  const router = useRouter();
-
-  let querySlug = (router?.query.slug ?  router?.query.slug : slug);
-
-  // if(router == null){ 
-  //   return;
-  // }
-
   const data = usePlasmicQueryData<any[] | null>(
 
     JSON.stringify({ slug }),
     async () => {
-      return getPreviewPostBySlug(querySlug);
+      return getPreviewPostBySlug(slug);
     }
   );
 
 
   if (!data?.data) {
-    return <div>Please specify a collection. slug {querySlug}</div>;
+    return <div>Please specify a collection. slug {slug}</div>;
   }
   return (
     <div className={className}>
@@ -84,7 +75,7 @@ export function BlogPostFetcher({
   );
 }
 
-export function ContentfulField({
+export function BlogField({
   className,
   path,
   setControlContextData,
@@ -103,8 +94,6 @@ export function ContentfulField({
     return <div>ContentfulField must specify a path.</div>;
   }
   const data = L.get(item, path);
-
-  // console.log("!", data);
 
   if(data?.json) {
     return documentToContent(data);
