@@ -3,7 +3,8 @@ import { BlogFetcher, BlogPostFetcher, BlogField } from "./components/contentful
 
 import Button from "./lib/components/Button";
 import Avatar from "./lib/components/Avatar";
-
+import WhiteLogo from "./lib/components/WhiteLogo";
+import Divider from "./lib/components/Divider";
 
 
 export const PLASMIC = initPlasmicLoader({
@@ -46,6 +47,7 @@ PLASMIC.registerComponent(BlogFetcher, {
       },
     },
   },
+  providesData: true
 });
 
 
@@ -70,6 +72,7 @@ PLASMIC.registerComponent(BlogPostFetcher, {
       },
     },
   },
+  providesData: true
 });
 
 PLASMIC.registerComponent(BlogField, {
@@ -82,6 +85,31 @@ PLASMIC.registerComponent(BlogField, {
   },
 });
 
+
+PLASMIC.registerComponent(WhiteLogo, {
+  name: "WhiteLogo",
+  props: {
+    width: {
+      type: "string",
+      defaultValue: "10",
+    },
+    height: {
+      type: "string",
+      defaultValue: "51",
+    },
+  },
+});
+
+PLASMIC.registerComponent(Divider, {
+  name: "Divider",
+  props: {
+    colorScheme: {
+      type: "string",
+      defaultValue: "whiteAlpha",
+      options: ["red", "green", "blue", "teal","pink", "purple", "cyan",  "orange", "yellow", "facebook", "messenger", "whiteAlpha", "blackAlpha"],
+    },
+  },
+});
 
 PLASMIC.registerComponent(Button, {
   name: "Chakra-Button",
