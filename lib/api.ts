@@ -16,7 +16,7 @@ featuredImage {
   description
 }
 date
-description {
+richText {
   json
   links {
     assets {
@@ -42,7 +42,6 @@ description {
 
 const POST_GRAPHQL_FIELDS_MINIMAL = `
 slug
-title
 `;
 
 async function fetchGraphQL(query: string, preview = false) {

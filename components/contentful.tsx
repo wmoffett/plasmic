@@ -5,8 +5,6 @@ import { ReactNode } from "react";
 import { getAllPostsForHome, getPreviewPostBySlug } from "@lib/api";
 import documentToContent from '@lib/renderDocument/documentToContent';
 
-import { useRouter } from 'next/router'
-
 export function BlogFetcher({
   type,
   children,
@@ -17,7 +15,6 @@ export function BlogFetcher({
   className?: string;
 }) {
 
-
   const data = usePlasmicQueryData<any[] | null>(
 
     JSON.stringify({ type }),
@@ -25,7 +22,7 @@ export function BlogFetcher({
       return getAllPostsForHome(false);
     }
   );
-  console.log("!", data);
+
   if (!data?.data) {
     return <div>Please specify a collection.</div>;
   }
@@ -42,7 +39,6 @@ export function BlogFetcher({
 
 export function BlogPostFetcher({
   slug,
-  type,
   children,
   className,
 }: {
@@ -60,9 +56,8 @@ export function BlogPostFetcher({
     }
   );
 
-
   if (!data?.data) {
-    return <div>Please specify a collection. slug {slug}</div>;
+    return <div>Please specify a collection.</div>;
   }
   return (
     <div className={className}>
@@ -89,7 +84,9 @@ export function BlogField({
   if (!item) {
     return <div>ContentfulField must be used within a ContentfulFetcher</div>;
   }
+
   setControlContextData?.({ fields: Object.keys(item) });
+
   if (!path) {
     return <div>ContentfulField must specify a path.</div>;
   }

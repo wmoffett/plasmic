@@ -54,7 +54,6 @@ export const getStaticProps: GetStaticProps<
 
   const plasmicData = await PLASMIC.fetchComponentData(pagePath);
 
-  console.log('!slug', slug);
   const queryCache = await extractPlasmicQueryData(
     <ChakraProvider theme={theme}>
       <PlasmicRootProvider loader={PLASMIC} prefetchedData={plasmicData}>
@@ -80,8 +79,6 @@ const BlogPage: NextPage<BlogPageProps> = ({
   queryCache,
   slug,
 }) => {
-
-  console.log('!BlogPage PlasmicComponent', slug);
   return (
     <ChakraProvider theme={theme}>
       <PlasmicRootProvider
